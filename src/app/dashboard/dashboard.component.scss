@@ -1,0 +1,28 @@
+.card-container {
+    margin: 10px;
+    max-width: calc(25% - 20px);
+  }
+  
+  .card-image {
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ccc; /* You can add a placeholder image here if available */
+  }
+  
+  /* Customize card styles as needed */
+  mat-card {
+    /* Add custom styles for mat-card */
+  }
+  
+
+  div[fxLayout] {
+   margin-top: 10px;
+  }
+  
+  /* Increase the size of the search input */
+  .search-input {
+    font-size: 24px; /* Adjust the font size as needed */
+    width: 400px; /* Adjust the width as needed */
+  }

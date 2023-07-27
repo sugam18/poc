@@ -1,0 +1,31 @@
+<div fxLayout="column" fxLayoutGap="10px">
+
+    <div fxLayout="row" fxLayoutAlign="center">
+        <mat-form-field appearance="outline">
+        <mat-label>Search Items</mat-label>
+        <input matInput [(ngModel)]="searchText" (keyup)="applyFilter()" class="search-input" />
+        </mat-form-field>
+    </div>
+    
+
+    <div fxLayout="row wrap" fxLayoutAlign="start start">
+        <div *ngFor="let item of filteredItems" fxFlex="calc(25% - 20px)" class="card-container">
+            <mat-card>
+                <mat-card-header>
+                  <div mat-card-avatar class="card-image"></div>
+                  <mat-card-title>{{ item.name }}</mat-card-title>
+                  <mat-card-subtitle>{{ item.processDefinitionKey }}</mat-card-subtitle>
+                </mat-card-header>
+                <!-- <mat-card-content>
+                  <p>Name: {{ item.name }}</p>
+                  <p>Description: {{ item.processDefinitionKey }}</p>
+                </mat-card-content> -->
+                <mat-card-actions>
+                  <!-- Add Start Process button -->
+                  <button mat-raised-button color="primary" (click)="startProcess(item)">Start Process</button>
+                </mat-card-actions>
+              </mat-card>
+        </div>
+    </div>
+  </div>
+  <!-- app.component.html -->

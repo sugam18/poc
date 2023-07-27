@@ -1,0 +1,52 @@
+/* combined-section.component.css */
+.container {
+    height: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    display: flex;
+  }
+  
+  .left-section {
+    padding-right: 16px;
+    overflow-y: auto;
+    flex: 1;
+  }
+  
+  .left-container {
+    // height: calc(100% - 32px);
+  }
+  
+  .left-card {
+    cursor: pointer;
+    margin-bottom: 16px;
+  }
+  
+  .right-section {
+    padding-left: 16px;
+    flex: 3;
+    display: flex;
+    flex-direction: column; /* Arrange form and details sections vertically */
+  }
+  
+  .form-section {
+    padding-bottom: 16px; /* Add some space between the form and details sections */
+  }
+  
+  /* Position the details section to the right with a 3:1 ratio */
+  .details-section {
+    flex: 1;
+  }
+  
+  /* Responsive styles for smaller screens */
+  @media screen and (max-width: 600px) {
+    .container {
+      flex-direction: column;
+    }
+    
+    .left-section {
+      padding-right: 0;
+    }
+  }
+  .chip {
+    margin-right: 1rem;
+  }

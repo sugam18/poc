@@ -1,0 +1,96 @@
+<!-- combined-section.component.html -->
+<div class="container" fxLayout="row" fxLayoutAlign="start start">
+  <!-- Left Section (25%) -->
+  <div class="left-section" fxFlex="25">
+    <div class="left-container">
+      <div
+        class="left-card"
+        *ngFor="let item of items"
+        (click)="onItemClick(item)"
+      >
+        <mat-card>
+          <mat-card-content>
+            <h3>{{ item.name }}</h3>
+            <p>{{ item.processName }}</p>
+            <p>{{ item.creationDate | date : "short" }}</p>
+            <p *ngIf="item.assignee">
+              <mat-chip>Assigned to me</mat-chip>
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div *ngIf="items.length == 0">
+        <h3>No task to show</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Section (75%) -->
+  <div class="right-section" *ngIf="selectedItem" fxFlex="75">
+    <!-- Form Section -->
+    <div class="form-section">
+      <div>
+        <div class="unassigned-section" *ngIf="!selectedTaskInfo.assignee">
+          <mat-chip class="chip">Unassigned</mat-chip>
+          <button mat-raised-button (click)="assignTaskOnClick(selectedItem)" color="secondary">
+            Assign to me
+          </button>
+        </div>
+        <div class="assigned-section" *ngIf="selectedTaskInfo.assignee">
+          <mat-chip class="chip">Assigned to me</mat-chip>
+          <button mat-raised-button (click)="unassignTaskOnClick(selectedItem)">
+            Unassign
+          </button>
+        </div>
+      </div>
+      <!-- Add your form elements here -->
+      <div *ngIf="loadForm">
+        <formio [form]="formData" 
+        (change)="onFormChange($event)"
+        (ready)="onFormReady($event)"
+        [submission]="submission">
+
+</formio>
+      </div>
+
+      <div *ngIf="!loadForm">
+        <h2> no form to display</h2>
+
+      </div>
+
+      
+      <!-- <formio
+        [form]='{
+          "components": [
+          {
+            "label": "Name",
+            "type": "textfield",
+            "id": "Field_1g15251",
+            "key": "name",
+            "validate": {
+              "required": true
+            }
+          },
+          {
+            "label": "Amount",
+            "type": "number",
+            "id": "Field_0zxkyeo",
+            "key": "amount",
+            "validate": {
+              "required": true
+            }
+          }
+        ],
+        }'
+      ></formio> -->
+      <button mat-raised-button color="primary" (click)="onComplete($event)">Complete</button>
+    </div>
+
+    <!-- Details Section -->
+    <div class="details-section">
+      <!-- <h2>Item Details</h2>
+      <p>{{ selectedItem.name }}</p> -->
+      <!-- Add more details here as needed -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div fxLayout="column" fxLayoutGap="10px">
+
+    <div fxLayout="row" fxLayoutAlign="center">
+        <mat-form-field appearance="outline">
+        <mat-label>Search Items</mat-label>
+        <input matInput [(ngModel)]="searchText" (keyup)="applyFilter()" class="search-input" />
+        </mat-form-field>
+    </div>
+    
+
+    <div fxLayout="row wrap" fxLayoutAlign="start start">
+        <div *ngFor="let item of filteredItems" fxFlex="calc(25% - 20px)" class="card-container">
+        <mat-card>
+            <mat-card-header>
+            <mat-card-title>{{ item.bpmnProcessId }}</mat-card-title>
+            <mat-card-subtitle>{{ item.startDate | date:'short'}}</mat-card-subtitle>
+            <mat-card-subtitle>{{ item.active }}</mat-card-subtitle>
+
+            </mat-card-header>
+            <!-- Add more card content as needed -->
+        </mat-card>
+        </div>
+    </div>
+  </div>
+  
